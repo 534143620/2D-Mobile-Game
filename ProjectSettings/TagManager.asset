@@ -15,7 +15,7 @@ TagManager:
   - 
   - Ground
   - Enviroments
-  - 
+  - NPC
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 4110605775
+    locked: 0
+  - name: NPC
+    uniqueID: 801896093
     locked: 0
