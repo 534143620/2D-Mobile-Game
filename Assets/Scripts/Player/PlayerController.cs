@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("States Check")]
     public bool isGround;
+    public bool isJump;
     public bool canJump;
     // Start is called before the first frame update
     void Start()
@@ -72,9 +73,11 @@ public class PlayerController : MonoBehaviour
         if (isGround)
         {
             rb.gravityScale = 1;
+            isJump = false;
         }
         else
         {
+            isJump = true;
             rb.gravityScale = 4;
             canJump = false;
         }
