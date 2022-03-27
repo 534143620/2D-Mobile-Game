@@ -20,6 +20,11 @@ public class PlayerController : MonoBehaviour
     public bool isGround;
     public bool isJump;
     public bool canJump;
+
+    [Header("Jump FX")]
+    public GameObject jumpFX;
+    public GameObject landFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +69,7 @@ public class PlayerController : MonoBehaviour
         if (canJump)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            showFx(jumpFX, new Vector3(0, -0.45f, 0));
         }
     }
 
@@ -83,6 +89,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void showFx(GameObject FxObject,Vector3 vector3) //显示跳跃和落地FX,加上相对位置的偏移
+    {
+        FxObject.SetActive(true);
+        FxObject.transform.position = transform.position + vector3;
+    }
+
+    public void LandFX() //在落地animation的第一针做事件的显示，肯定是非常不好的垃圾代码，之后想办法优化
+    {
+        showFx(landFX, new Vector3(0, -0.75f, 0));
+    }
     public void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(groundCheck.position, checkRange);
