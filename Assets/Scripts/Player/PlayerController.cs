@@ -25,6 +25,11 @@ public class PlayerController : MonoBehaviour
     public GameObject jumpFX;
     public GameObject landFX;
 
+    [Header("Attack Settings")]
+    public GameObject bombPrefab;
+    public float nextAttack = 0;
+    public float attackRate;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +68,11 @@ public class PlayerController : MonoBehaviour
         {
             canJump = true;
         }
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            Attack();
+        }
     }
     void Jump()
     {
@@ -82,7 +92,7 @@ public class PlayerController : MonoBehaviour
             isJump = false;
         }
         else
-        {
+        {  
             isJump = true;
             rb.gravityScale = 4;
             canJump = false;
@@ -98,6 +108,15 @@ public class PlayerController : MonoBehaviour
     public void LandFX() //在落地animation的第一针做事件的显示，肯定是非常不好的垃圾代码，之后想办法优化
     {
         showFx(landFX, new Vector3(0, -0.75f, 0));
+    }
+
+    public void Attack()
+    {
+        if (Time.time > nextAttack)
+        {
+            Instantiate(bombPrefab,transform.position, bombPrefab.transform.rotation);
+            nextAttack = Time.time + attackRate;
+        }
     }
     public void OnDrawGizmos()
     {
