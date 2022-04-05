@@ -4,24 +4,47 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    EnemyBaseState currentState;
+
+    public Animator anim;
+    public int animState;
+
     [Header("Movement")]
     public float speed;
     public Transform pointA, pointB;
     public Transform targetPoint;
 
     public List<Transform> attackList = new List<Transform>();
+
+    public PatrolState patrolState = new PatrolState();
     // Start is called before the first frame update
+
+    public void Awake()
+    {
+        Init();
+    }
     void Start()
     {
-        targetPoint = pointA;
+        //targetPoint = pointA;
+        transitionToState(patrolState);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Mathf.Abs(transform.position.x - targetPoint.position.x) < 0.01f)
-            switchPoint();
-        moveToTarget();
+        currentState.OnUpdate(this);
+        anim.SetInteger("state", animState);
+    }
+
+    public virtual void Init()
+    {
+        anim = GetComponent<Animator>();
+    }
+
+    public void transitionToState(EnemyBaseState state)
+    {
+        currentState = state;
+        currentState.EnterState(this);
     }
 
     public void moveToTarget()
@@ -34,7 +57,7 @@ public class Enemy : MonoBehaviour
     {
     }
 
-    public void skillAction()
+    public virtual void skillAction()
     {
     }
 

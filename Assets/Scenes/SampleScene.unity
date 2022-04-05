@@ -4809,14 +4809,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1396649923}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aadce6856c8d4c544b4ef5b8bbd00102, type: 3}
+  m_Script: {fileID: 11500000, guid: 567b9f5f5ecff014fa3c1b2783425e96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  animState: 0
   speed: 1
   pointA: {fileID: 1280066629}
   pointB: {fileID: 1006267916}
-  targetPoint: {fileID: 0}
+  targetPoint: {fileID: 1006267916}
   attackList: []
+  health: 0
 --- !u!1 &1399389530
 GameObject:
   m_ObjectHideFlags: 0
