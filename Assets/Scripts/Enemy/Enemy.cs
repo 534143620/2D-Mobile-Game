@@ -14,9 +14,15 @@ public class Enemy : MonoBehaviour
     public Transform pointA, pointB;
     public Transform targetPoint;
 
+    [Header("Attack Setting")]
+    public float attackRate;
+    private float nextAttack = 0;
+    public float attackRange, skillRange;
+
     public List<Transform> attackList = new List<Transform>();
 
     public PatrolState patrolState = new PatrolState();
+    public AttackState attackState = new AttackState();
     // Start is called before the first frame update
 
     public void Awake()
@@ -55,10 +61,28 @@ public class Enemy : MonoBehaviour
 
     public void attackAction()
     {
+        if (Vector2.Distance(transform.position, targetPoint.position) < attackRange)
+        {
+            if (Time.time > nextAttack)
+            {
+                //执行攻击
+                Debug.Log("普通攻击");
+                nextAttack = Time.time + attackRate;
+            }
+        }
     }
 
     public virtual void skillAction()
     {
+        if (Vector2.Distance(transform.position, targetPoint.position) < skillRange)
+        {
+            if (Time.time > nextAttack)
+            {
+                //执行攻击
+                nextAttack = Time.time + attackRate;
+            }
+        }
+
     }
 
     public void fileDirection()

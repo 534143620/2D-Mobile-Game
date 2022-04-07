@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 453610023}
   m_Layer: 13
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4818,6 +4818,9 @@ MonoBehaviour:
   pointA: {fileID: 1280066629}
   pointB: {fileID: 1006267916}
   targetPoint: {fileID: 1006267916}
+  attackRate: 2
+  attackRange: 1
+  skillRange: 2
   attackList: []
   health: 0
 --- !u!1 &1399389530
