@@ -13,6 +13,6 @@ public class Cucumber : Enemy
 
     public override void skillAction()
     {
-      
+        base.skillAction();
     }
 }

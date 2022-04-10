@@ -7,6 +7,8 @@ public class AttackState : EnemyBaseState
     public override void EnterState(Enemy enemy)
     {
         //Debug.Log("发现敌人");
+        enemy.animState = 2;
+        enemy.targetPoint = enemy.attackList[0];
     }
 
     public override void OnUpdate(Enemy enemy)
@@ -22,9 +24,11 @@ public class AttackState : EnemyBaseState
                 {
                     enemy.targetPoint = enemy.attackList[i];
                 }
-                   
+
             }
         }
+        if (enemy.attackList.Count == 1)
+            enemy.targetPoint = enemy.attackList[0];
 
         if (enemy.targetPoint.CompareTag("Player"))
         {

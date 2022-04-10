@@ -66,6 +66,7 @@ public class Enemy : MonoBehaviour
             if (Time.time > nextAttack)
             {
                 //执行攻击
+                anim.SetTrigger("attack");
                 Debug.Log("普通攻击");
                 nextAttack = Time.time + attackRate;
             }
@@ -79,6 +80,8 @@ public class Enemy : MonoBehaviour
             if (Time.time > nextAttack)
             {
                 //执行攻击
+                anim.SetTrigger("skill");
+                Debug.Log("执行技能攻击");
                 nextAttack = Time.time + attackRate;
             }
         }
