@@ -15,4 +15,15 @@ public class Cucumber : Enemy
     {
         base.skillAction();
     }
+
+    public void SetOff() //Animation Event
+    {
+        //if (targetPoint)
+        //{
+        //    targetPoint.GetComponent<Bomb>().TurnOff();
+        //}
+        //问号‘?’的作用表示判断是否为空
+        targetPoint.GetComponent<Bomb>()?.TurnOff();
+    }
+
 }
