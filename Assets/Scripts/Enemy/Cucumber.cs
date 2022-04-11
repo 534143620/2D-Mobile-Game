@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cucumber : Enemy
+public class Cucumber : Enemy,IDamageable
 {
-    public int health;
-
     public override void Init()
     {
         base.Init();
@@ -25,5 +23,17 @@ public class Cucumber : Enemy
         //问号‘?’的作用表示判断是否为空
         targetPoint.GetComponent<Bomb>()?.TurnOff();
     }
+
+    public void GetHit(float damage)
+    {
+        health -= damage;
+        if (health < 1)
+        {
+            health = 0;
+            isDead = true;
+        }
+        anim.SetTrigger("hit");
+    }
+
 
 }

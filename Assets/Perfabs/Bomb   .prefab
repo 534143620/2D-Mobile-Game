@@ -140,10 +140,11 @@ MonoBehaviour:
   startTime: 0
   waitTime: 2
   bombForce: 1.3
+  damage: 0
   radius: 1.4
   targetLayer:
     serializedVersion: 2
-    m_Bits: 3584
+    m_Bits: 11776
 --- !u!58 &940146974761608345
 CircleCollider2D:
   m_ObjectHideFlags: 0

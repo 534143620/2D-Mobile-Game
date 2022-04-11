@@ -10,6 +10,7 @@ public class Bomb : MonoBehaviour
     public float startTime;
     public float waitTime;
     public float bombForce;
+    public float damage;
 
     [Header("Check")]
     public float radius;
@@ -21,6 +22,7 @@ public class Bomb : MonoBehaviour
         coll = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         startTime = Time.time;
+        damage = 3;
     }
 
     // Update is called once per frame
@@ -48,6 +50,10 @@ public class Bomb : MonoBehaviour
             if (item.CompareTag("Bomb") && item.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("bomb_off"))
             {
                 item.GetComponent<Bomb>().TurnOn();
+            }
+            if (item.CompareTag("Player"))
+            {
+                item.GetComponent<IDamageable>().GetHit(damage);
             }
         }
     }

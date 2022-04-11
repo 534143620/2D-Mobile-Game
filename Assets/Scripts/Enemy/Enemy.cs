@@ -9,6 +9,10 @@ public class Enemy : MonoBehaviour
     public Animator anim;
     public int animState;
 
+    [Header("Enemy State")]
+    public float health;
+    public bool isDead;
+
     [Header("Movement")]
     public float speed;
     public Transform pointA, pointB;
@@ -38,6 +42,9 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        anim.SetBool("dead", isDead);
+        if (isDead)
+            return;
         currentState.OnUpdate(this);
         anim.SetInteger("state", animState);
     }
@@ -45,6 +52,7 @@ public class Enemy : MonoBehaviour
     public virtual void Init()
     {
         anim = GetComponent<Animator>();
+        health = 10;
     }
 
     public void transitionToState(EnemyBaseState state)
