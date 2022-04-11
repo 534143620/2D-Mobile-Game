@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ public class Enemy : MonoBehaviour
 
     public Animator anim;
     public int animState;
-
+    private GameObject alarmSign;
     [Header("Enemy State")]
     public float health;
     public bool isDead;
@@ -52,6 +53,7 @@ public class Enemy : MonoBehaviour
     public virtual void Init()
     {
         anim = GetComponent<Animator>();
+        alarmSign = transform.GetChild(0).gameObject;
         health = 10;
     }
 
@@ -112,7 +114,7 @@ public class Enemy : MonoBehaviour
             targetPoint = pointB;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    public void OnTriggerStay2D(Collider2D collision)
     {
         if (attackList.Contains(collision.transform))
             return;
@@ -120,8 +122,25 @@ public class Enemy : MonoBehaviour
             attackList.Add(collision.transform);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    public void OnTriggerExit2D(Collider2D collision)
     {
         attackList.Remove(collision.transform);
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        StartCoroutine(OnAlarm());
+    }
+
+    //private void StartCoroutine(IEnumerable enumerable)
+    //{
+    //    throw new NotImplementedException();
+    //}
+
+    IEnumerator OnAlarm()
+    {
+        alarmSign.SetActive(true);
+        yield return new WaitForSeconds(alarmSign.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        alarmSign.SetActive(false);
     }
 }

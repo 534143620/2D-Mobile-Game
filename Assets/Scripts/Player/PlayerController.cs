@@ -138,12 +138,16 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void GetHit(float damage)
     {
-        health -= damage;
-        if (health < 1)
+        if (!anim.GetCurrentAnimatorStateInfo(1).IsName("Player_hit"))
         {
-            health = 0;
-            isDead = true;
+            health -= damage;
+            if (health < 1)
+            {
+                health = 0;
+                isDead = true;
+            }
+            anim.SetTrigger("hit");
+
         }
-        anim.SetTrigger("hit");
     }
 }

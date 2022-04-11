@@ -8,7 +8,7 @@ public class HitPoint : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
+            other.GetComponent<IDamageable>().GetHit(1);
         }
         if (other.CompareTag("Bomb"))
         {
