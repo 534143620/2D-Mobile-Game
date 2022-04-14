@@ -37,11 +37,11 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         //targetPoint = pointA;
-        transitionToState(patrolState);
+        TransitionToState(patrolState);
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         anim.SetBool("dead", isDead);
         if (isDead)
@@ -57,19 +57,19 @@ public class Enemy : MonoBehaviour
         health = 10;
     }
 
-    public void transitionToState(EnemyBaseState state)
+    public void TransitionToState(EnemyBaseState state)
     {
         currentState = state;
         currentState.EnterState(this);
     }
 
-    public void moveToTarget()
+    public void MoveToTarget()
     {
         transform.position = Vector2.MoveTowards(transform.position, targetPoint.position, speed * Time.deltaTime);
-        fileDirection();
+        FileDirection();
     }
 
-    public void attackAction()
+    public void AttackAction()
     {
         if (Vector2.Distance(transform.position, targetPoint.position) < attackRange)
         {
@@ -83,7 +83,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public virtual void skillAction()
+    public virtual void SkillAction()
     {
         if (Vector2.Distance(transform.position, targetPoint.position) < skillRange)
         {
@@ -98,7 +98,7 @@ public class Enemy : MonoBehaviour
 
     }
 
-    public void fileDirection()
+    public void FileDirection()
     {
         if (transform.position.x < targetPoint.position.x)
             transform.rotation = Quaternion.Euler(0f, 0f, 0f);
@@ -106,7 +106,7 @@ public class Enemy : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 180f, 0f);
     }   
 
-    public void switchPoint()
+    public void SwitchPoint()
     {
         if (Mathf.Abs(pointB.position.x - transform.position.x) < Mathf.Abs(pointA.position.x - transform.position.x))
             targetPoint = pointA;
@@ -134,8 +134,7 @@ public class Enemy : MonoBehaviour
 
     //private void StartCoroutine(IEnumerable enumerable)
     //{
-    //    throw new NotImplementedException();
-    //}
+    //    throw new NotImplementedException();    //}
 
     IEnumerator OnAlarm()
     {

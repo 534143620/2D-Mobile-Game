@@ -9,9 +9,9 @@ public class Cucumber : Enemy,IDamageable
         base.Init();
     }
 
-    public override void skillAction()
+    public override void SkillAction()
     {
-        base.skillAction();
+        base.SkillAction();
     }
 
     public void SetOff() //Animation Event

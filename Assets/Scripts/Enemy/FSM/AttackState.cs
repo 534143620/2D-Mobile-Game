@@ -14,8 +14,8 @@ public class AttackState : EnemyBaseState
     public override void OnUpdate(Enemy enemy)
     {
         if (enemy.attackList.Count == 0)
-            enemy.transitionToState(enemy.patrolState);
-        if (enemy.attackList.Count > 0)
+            enemy.TransitionToState(enemy.patrolState);
+        else if (enemy.attackList.Count > 0)
         {
             for (int i = 0; i < enemy.attackList.Count; i++)
             {
@@ -27,17 +27,19 @@ public class AttackState : EnemyBaseState
 
             }
         }
-        if (enemy.attackList.Count == 1)
-            enemy.targetPoint = enemy.attackList[0];
+        else enemy.targetPoint = enemy.attackList[0];
+
+        //if (enemy.attackList.Count == 1)
+        //    enemy.targetPoint = enemy.attackList[0];
 
         if (enemy.targetPoint.CompareTag("Player"))
         {
-            enemy.attackAction();
+            enemy.AttackAction();
         }
-        else if(enemy.targetPoint.CompareTag("Bomb"))
+        if(enemy.targetPoint.CompareTag("Bomb"))
         {
-            enemy.skillAction();
+            enemy.SkillAction();
         }
-        enemy.moveToTarget();
+        enemy.MoveToTarget();
     }
 }
