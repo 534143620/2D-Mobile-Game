@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     [Header("Enemy State")]
     public float health;
     public bool isDead;
+    public bool hasBomb;
 
     [Header("Movement")]
     public float speed;
@@ -116,7 +117,7 @@ public class Enemy : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collision)
     {
-        if (attackList.Contains(collision.transform))
+        if (attackList.Contains(collision.transform) || hasBomb)
             return;
         else
             attackList.Add(collision.transform);

@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &653973436952719673
 Transform:
   m_ObjectHideFlags: 0
@@ -133,7 +133,6 @@ GameObject:
   - component: {fileID: 4396200346421872001}
   - component: {fileID: 4396200346421872006}
   - component: {fileID: 4396200346421872007}
-  - component: {fileID: 6775276470913000591}
   - component: {fileID: 1838233467606510873}
   m_Layer: 10
   m_Name: Sprite Setting
@@ -275,30 +274,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6775276470913000591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4396200346421872058}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab22dee3c0d7037499410376ca92651e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  animState: 0
-  health: 0
-  isDead: 0
-  speed: 2.5
-  pointA: {fileID: 4396200346509905148}
-  pointB: {fileID: 4396200345360619065}
-  targetPoint: {fileID: 0}
-  attackRate: 1.5
-  attackRange: 1.5
-  skillRange: 2
-  attackList: []
 --- !u!114 &1838233467606510873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,7 +290,7 @@ MonoBehaviour:
   animState: 0
   health: 0
   isDead: 0
-  speed: 2
+  speed: 1
   pointA: {fileID: 4396200346509905148}
   pointB: {fileID: 4396200345360619065}
   targetPoint: {fileID: 0}
@@ -363,13 +338,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4396200346589315717}
   - component: {fileID: 4396200346589315719}
+  - component: {fileID: 2630321488817838538}
   m_Layer: 14
   m_Name: Hitpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4396200346589315717
 Transform:
   m_ObjectHideFlags: 0
@@ -410,6 +386,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7936921, y: 0.5357437}
   m_EdgeRadius: 0
+--- !u!114 &2630321488817838538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4396200346589315770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8517c0ce6ec34494ba9c9ec24c9a27dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boomAvilable: 1
 --- !u!1 &4396200346870296219
 GameObject:
   m_ObjectHideFlags: 0
