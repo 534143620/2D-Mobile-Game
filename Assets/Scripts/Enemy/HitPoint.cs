@@ -17,12 +17,12 @@ public class HitPoint : MonoBehaviour
         {
             other.GetComponent<IDamageable>().GetHit(1);
             if (boomAvilable == true)
-                other.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(dir, 1) * 10, ForceMode2D.Impulse);
+                other.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(dir, 1) * 5, ForceMode2D.Impulse);
         }
         if (other.CompareTag("Bomb"))
         {
             if (boomAvilable== true)
-                other.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(dir, 1) * 10, ForceMode2D.Impulse);
+                other.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(dir, 1) * 5, ForceMode2D.Impulse);
         }
     }
 }

@@ -363,7 +363,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4396200346589315717}
   - component: {fileID: 4396200346589315719}
-  - component: {fileID: 4396200346589315716}
   m_Layer: 14
   m_Name: Hitpoint
   m_TagString: Untagged
@@ -411,19 +410,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7936921, y: 0.5357437}
   m_EdgeRadius: 0
---- !u!114 &4396200346589315716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4396200346589315770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8517c0ce6ec34494ba9c9ec24c9a27dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boomAvilable: 1
 --- !u!1 &4396200346870296219
 GameObject:
   m_ObjectHideFlags: 0

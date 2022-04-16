@@ -6625,8 +6625,52 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bald Pirate
       objectReference: {fileID: 0}
+    - target: {fileID: 653973436952719678, guid: be4cb972d0e58bb40b35d9517d5d0c8f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1838233467606510873, guid: be4cb972d0e58bb40b35d9517d5d0c8f,
+        type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396200346589315719, guid: be4cb972d0e58bb40b35d9517d5d0c8f,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396200346589315770, guid: be4cb972d0e58bb40b35d9517d5d0c8f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396200346589315770, guid: be4cb972d0e58bb40b35d9517d5d0c8f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be4cb972d0e58bb40b35d9517d5d0c8f, type: 3}
+--- !u!1 &2630321488817838537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4396200346589315770, guid: be4cb972d0e58bb40b35d9517d5d0c8f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1838233465979902835}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2630321488817838538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2630321488817838537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8517c0ce6ec34494ba9c9ec24c9a27dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boomAvilable: 1
 --- !u!1001 &2630321489604655687
 PrefabInstance:
   m_ObjectHideFlags: 0
