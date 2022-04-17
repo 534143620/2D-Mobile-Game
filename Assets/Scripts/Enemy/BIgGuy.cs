@@ -42,6 +42,8 @@ public class BIgGuy : Enemy,IDamageable
     {
         if (hasBomb)
         {
+            if (!targetPoint)
+                return;
             targetPoint.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             targetPoint.SetParent(transform.parent.parent);
 

@@ -332,15 +332,17 @@ MonoBehaviour:
   animState: 0
   health: 0
   isDead: 0
-  speed: 0
-  pointA: {fileID: 0}
-  pointB: {fileID: 0}
+  hasBomb: 0
+  isBoss: 1
+  speed: 2.5
+  pointA: {fileID: 6248262416418424316}
+  pointB: {fileID: 6248262417584496441}
   targetPoint: {fileID: 0}
-  attackRate: 0
-  attackRange: 0
-  skillRange: 0
+  attackRate: 1.5
+  attackRange: 1.5
+  skillRange: 2
   attackList: []
-  pickupPoint: {fileID: 0}
+  pickupPoint: {fileID: 9131868404081523734}
 --- !u!1 &6248262416570559994
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,7 +417,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6248262416900066181
 Transform:
   m_ObjectHideFlags: 0

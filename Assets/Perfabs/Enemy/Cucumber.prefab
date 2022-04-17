@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7082206045330899102
 Transform:
   m_ObjectHideFlags: 0
@@ -86,7 +86,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7082206045916880822
 Transform:
   m_ObjectHideFlags: 0
@@ -361,6 +361,8 @@ MonoBehaviour:
   animState: 0
   health: 0
   isDead: 0
+  hasBomb: 0
+  isBoss: 0
   speed: 1
   pointA: {fileID: 7082206046714706365}
   pointB: {fileID: 7082206046021456884}

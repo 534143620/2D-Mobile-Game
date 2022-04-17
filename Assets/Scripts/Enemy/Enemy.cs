@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     public float health;
     public bool isDead;
     public bool hasBomb;
+    public bool isBoss;
 
     [Header("Movement")]
     public float speed;
@@ -39,11 +40,15 @@ public class Enemy : MonoBehaviour
     {
         //targetPoint = pointA;
         TransitionToState(patrolState);
+        if (isBoss)
+            UIManager.instance.SetBossHealth(health);
     }
 
     // Update is called once per frame
     public virtual void Update()
     {
+        if (isBoss)
+            UIManager.instance.UpdateBossHealth(health);
         anim.SetBool("dead", isDead);
         if (isDead)
             return;
@@ -56,6 +61,7 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         alarmSign = transform.GetChild(0).gameObject;
         health = 10;
+
     }
 
     public void TransitionToState(EnemyBaseState state)
@@ -117,7 +123,7 @@ public class Enemy : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collision)
     {
-        if (attackList.Contains(collision.transform) || hasBomb)
+        if (attackList.Contains(collision.transform) || hasBomb || GameManager.instance.GameOver)
             return;
         else
             attackList.Add(collision.transform);
@@ -130,12 +136,10 @@ public class Enemy : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        StartCoroutine(OnAlarm());
+        if (isDead|| GameManager.instance.GameOver)
+            return;
+        StartCoroutine(OnAlarm()); 
     }
-
-    //private void StartCoroutine(IEnumerable enumerable)
-    //{
-    //    throw new NotImplementedException();    //}
 
     IEnumerator OnAlarm()
     {

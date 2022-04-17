@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        health = 10;
+        health = 3;
     }
 
     void Update()
@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour, IDamageable
                 isDead = true;
             }
             anim.SetTrigger("hit");
-
+            UIManager.instance.UpdateHealth(health);
         }
     }
 }
