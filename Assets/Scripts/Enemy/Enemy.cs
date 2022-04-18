@@ -36,12 +36,14 @@ public class Enemy : MonoBehaviour
     {
         Init();
     }
-    void Start()
+
+    public void Start()
     {
         //targetPoint = pointA;
         TransitionToState(patrolState);
         if (isBoss)
             UIManager.instance.SetBossHealth(health);
+        GameManager.instance.IsEnemy(this);
     }
 
     // Update is called once per frame
@@ -51,7 +53,10 @@ public class Enemy : MonoBehaviour
             UIManager.instance.UpdateBossHealth(health);
         anim.SetBool("dead", isDead);
         if (isDead)
+        {
+            GameManager.instance.EnemyDead(this);
             return;
+        }
         currentState.OnUpdate(this);
         anim.SetInteger("state", animState);
     }
@@ -61,7 +66,6 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         alarmSign = transform.GetChild(0).gameObject;
         health = 10;
-
     }
 
     public void TransitionToState(EnemyBaseState state)

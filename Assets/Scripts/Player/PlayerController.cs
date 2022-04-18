@@ -38,7 +38,9 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        health = 3;
+        health = GameManager.instance.LoadHealth();
+        UIManager.instance.UpdateHealth(health);
+
     }
 
     void Update()
