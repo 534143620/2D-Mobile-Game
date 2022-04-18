@@ -25,21 +25,29 @@ public class UIManager : MonoBehaviour
         switch (currentHealth)
         {
             case 3:
+                if (healthBar == null)
+                    break;
                 healthBar.transform.GetChild(0).gameObject.SetActive(true);
                 healthBar.transform.GetChild(1).gameObject.SetActive(true);
                 healthBar.transform.GetChild(2).gameObject.SetActive(true);
                 break;
             case 2:
+                if (healthBar == null)
+                    break;
                 healthBar.transform.GetChild(0).gameObject.SetActive(true);
                 healthBar.transform.GetChild(1).gameObject.SetActive(true);
                 healthBar.transform.GetChild(2).gameObject.SetActive(false);
                 break;
             case 1:
+                if (healthBar == null)
+                    break;
                 healthBar.transform.GetChild(0).gameObject.SetActive(true);
                 healthBar.transform.GetChild(1).gameObject.SetActive(false);
                 healthBar.transform.GetChild(2).gameObject.SetActive(false);
                 break;
             case 0:
+                if (healthBar == null)
+                    break;
                 healthBar.transform.GetChild(0).gameObject.SetActive(false);
                 healthBar.transform.GetChild(1).gameObject.SetActive(false);
                 healthBar.transform.GetChild(2).gameObject.SetActive(false);
@@ -71,6 +79,7 @@ public class UIManager : MonoBehaviour
 
     public void GameOverUI(bool isGameOver)
     {
+        if(GameOverPanel != null)
         GameOverPanel.SetActive(isGameOver);
     }
 }

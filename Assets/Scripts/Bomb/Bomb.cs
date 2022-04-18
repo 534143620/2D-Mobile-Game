@@ -53,7 +53,7 @@ public class Bomb : MonoBehaviour
             }
             if (item.CompareTag("Player"))
             {
-                item.GetComponent<IDamageable>().GetHit(damage);
+                item.GetComponent<IDamageable>()?.GetHit(damage);
             }
         }
     }

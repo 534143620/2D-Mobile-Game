@@ -20,15 +20,23 @@ public class GameManager : MonoBehaviour
         }
         else
             Destroy(gameObject);
-
-        player = FindObjectOfType<PlayerController>();
-        doorExit = FindObjectOfType<Door>();
     }
 
     public void Update()
     {
-        GameOver = player.isDead;
+        if (player != null)
+            GameOver = player.isDead;
         UIManager.instance.GameOverUI(GameOver);
+    }
+
+    public void IsPlayer(PlayerController controller)
+    {
+        player = controller;
+    }
+
+    public void IsExitDoor(Door door)
+    {
+        doorExit = door;
     }
 
     public void IsEnemy(Enemy enemy)

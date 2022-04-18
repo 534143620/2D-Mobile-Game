@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         anim = GetComponent<Animator>();
         health = GameManager.instance.LoadHealth();
         UIManager.instance.UpdateHealth(health);
-
+        GameManager.instance.IsPlayer(this);
     }
 
     void Update()
