@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private Rigidbody2D rb;
     private Animator anim;
+    public Joystick joystick;
 
     [Header("Player State")]
     public float health;
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         health = GameManager.instance.LoadHealth();
+        joystick = FindObjectOfType<DynamicJoystick >();
         UIManager.instance.UpdateHealth(health);
         GameManager.instance.IsPlayer(this);
     }
@@ -66,9 +68,17 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     void Movement()
     {
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        //键盘
+        //float horizontalInput = Input.GetAxisRaw("Horizontal");
+        //操纵杆
+        float horizontalInput = joystick.Horizontal;
 
         rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
+
+        if (horizontalInput < 0)
+            horizontalInput = -1;
+        else
+            horizontalInput = 1;
 
         if (horizontalInput != 0)
         {
@@ -96,6 +106,11 @@ public class PlayerController : MonoBehaviour, IDamageable
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             showFx(jumpFX, new Vector3(0, -0.45f, 0));
         }
+    }
+
+    public void doJump()
+    {
+        canJump = true;
     }
 
     void PhysicsCheck()

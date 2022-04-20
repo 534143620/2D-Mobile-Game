@@ -60,6 +60,20 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.DeleteKey("playerHealth");
     }
 
+    public void NewGame()
+    {
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene(1);
+    }
+
+    public void ContinueGame()
+    {
+        if (PlayerPrefs.HasKey("sceneIndex"))
+            SceneManager.LoadScene(PlayerPrefs.GetInt("sceneIndex"));
+        else
+            NewGame();
+    }
+
     public void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -85,6 +99,7 @@ public class GameManager : MonoBehaviour
     public void SaveData()
     {
         PlayerPrefs.SetFloat("playerHealth", player.health);
+        PlayerPrefs.SetInt("sceneIndex", SceneManager.GetActiveScene().buildIndex + 1);
         PlayerPrefs.Save();
     }
 }
