@@ -69,16 +69,16 @@ public class PlayerController : MonoBehaviour, IDamageable
     void Movement()
     {
         //键盘
-        //float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
         //操纵杆
-        float horizontalInput = joystick.Horizontal;
+        //float horizontalInput = joystick.Horizontal;
 
         rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
 
-        if (horizontalInput < 0)
-            horizontalInput = -1;
-        else
-            horizontalInput = 1;
+        //if (horizontalInput < 0)
+        //    horizontalInput = -1;
+        //else
+        //    horizontalInput = 1;
 
         if (horizontalInput != 0)
         {

@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Movement")]
     public float speed;
-    public Transform pointA, pointB;
+    public float attackPosinRange;
     public Transform targetPoint;
 
     [Header("Attack Setting")]
@@ -30,7 +30,13 @@ public class Enemy : MonoBehaviour
 
     public PatrolState patrolState = new PatrolState();
     public AttackState attackState = new AttackState();
-    // Start is called before the first frame update
+
+    public Transform pointA;
+    public Transform pointB;
+    public float orgY;
+    public float autoSwitchPoint;
+    private float attackPosin;
+
 
     public void Awake()
     {
@@ -39,7 +45,6 @@ public class Enemy : MonoBehaviour
 
     public void Start()
     {
-        //targetPoint = pointA;
         TransitionToState(patrolState);
         if (isBoss)
             UIManager.instance.SetBossHealth(health);
@@ -51,6 +56,8 @@ public class Enemy : MonoBehaviour
     {
         if (isBoss)
             UIManager.instance.UpdateBossHealth(health);
+        //人物优化，防止敌人位置下落后，不改变pointA造成的卡顿
+        UpdatePointAandB();
         anim.SetBool("dead", isDead);
         if (isDead)
         {
@@ -61,10 +68,23 @@ public class Enemy : MonoBehaviour
         anim.SetInteger("state", animState);
     }
 
+    public virtual void UpdatePointAandB()
+    {
+          //人物优化，防止敌人位置下落后，不改变pointA造成的卡顿
+        if (Math.Abs(transform.position.y - orgY) > 0.3f)
+        {
+            pointB.position = transform.position + new Vector3(attackPosin, 0, 0);
+            pointA.position = transform.position + new Vector3(-attackPosin, 0, 0);
+            orgY = transform.position.y;
+        }
+    }
+
     public virtual void Init()
     {
         anim = GetComponent<Animator>();
+        orgY = transform.position.y;
         alarmSign = transform.GetChild(0).gameObject;
+        attackPosin = Math.Abs(transform.position.x - pointA.position.x);
         health = 10;
     }
 
@@ -123,6 +143,20 @@ public class Enemy : MonoBehaviour
             targetPoint = pointA;
         else
             targetPoint = pointB;
+    }
+
+    public void SwitchPointForPatrol()
+    {
+        if (targetPoint == pointA)
+        {
+            targetPoint = pointB;
+            return;
+        }
+        if (targetPoint == pointB)
+        {
+            targetPoint = pointA;
+            return;
+        }
     }
 
     public void OnTriggerStay2D(Collider2D collision)
