@@ -5,10 +5,16 @@ using UnityEngine;
 public class BossCaptain : Enemy, IDamageable
 {
     public Rigidbody2D rb;
+    public GameObject sword;
+    private Transform ShotPoint;
+    //private PlayerController playerController;
+
     public override void Init()
     {
         base.Init();
         rb = GetComponent<Rigidbody2D>();
+        ShotPoint = transform.Find("ShotPoint");
+        //playerController = GetComponent<PlayerController>();
         //anim = GetComponent<Animator>();
     }
 
@@ -24,6 +30,12 @@ public class BossCaptain : Enemy, IDamageable
             Mathf.Abs(transform.position.x - pointB.position.x) < 0.02f )
         {
             AutoJump();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            
+            GameObject gameObject_sword = Instantiate(sword, ShotPoint.position, Quaternion.identity);
         }
     }
 

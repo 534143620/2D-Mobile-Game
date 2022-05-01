@@ -98,7 +98,9 @@ public class PlayerController : MonoBehaviour, IDamageable
         {
             Attack();
         }
+
     }
+
     void Jump()
     {
         if (canJump)
