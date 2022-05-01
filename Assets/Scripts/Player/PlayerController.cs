@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     [Header("Player State")]
     public float health;
     public bool isDead;
+    public float extraJumpsValue;
+    private float extraJumps;   //实现2连跳
     //地面检测 
     [Header("Check Param")]
     public Transform groundCheck;
@@ -23,7 +25,6 @@ public class PlayerController : MonoBehaviour, IDamageable
     [Header("States Check")]
     public bool isGround;
     public bool isJump;
-    public bool canJump;
 
     [Header("Jump FX")]
     public GameObject jumpFX;
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         anim = GetComponent<Animator>();
         health = GameManager.instance.LoadHealth();
         joystick = FindObjectOfType<DynamicJoystick >();
+        extraJumps = extraJumpsValue;
         UIManager.instance.UpdateHealth(health);
         GameManager.instance.IsPlayer(this);
     }
@@ -63,7 +65,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         }
         PhysicsCheck();
         Movement();
-        Jump();
+        //Jump();
     }
 
     void Movement()
@@ -89,9 +91,13 @@ public class PlayerController : MonoBehaviour, IDamageable
     void CheckInput()
     {
         bool isJump = Input.GetButtonDown("Jump");
-        if (isJump && isGround)
+        if (isJump && extraJumps > 0)
         {
-            canJump = true;
+            extraJumps--;
+            Jump();
+        } else if(isJump && extraJumps == 0 && isGround == true)
+        {
+            Jump();
         }
 
         if (Input.GetKeyDown(KeyCode.J))
@@ -103,16 +109,13 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     void Jump()
     {
-        if (canJump)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            showFx(jumpFX, new Vector3(0, -0.45f, 0));
-        }
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        showFx(jumpFX, new Vector3(0, -0.45f, 0));
     }
 
     public void doJump()
     {
-        canJump = true;
+        //canJump = true;
     }
 
     void PhysicsCheck()
@@ -121,13 +124,11 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (isGround)
         {
             rb.gravityScale = 1;
-            isJump = false;
+            extraJumps = extraJumpsValue;
         }
         else
         {  
-            isJump = true;
             rb.gravityScale = 4;
-            canJump = false;
         }
     }
 

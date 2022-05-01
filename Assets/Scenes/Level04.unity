@@ -1113,6 +1113,7 @@ MonoBehaviour:
   joystick: {fileID: 0}
   health: 0
   isDead: 0
+  extraJumpsValue: 1
   groundCheck: {fileID: 1718659534}
   checkRange: 0.2
   checkLayerMask:
@@ -1120,7 +1121,6 @@ MonoBehaviour:
     m_Bits: 256
   isGround: 0
   isJump: 0
-  canJump: 0
   jumpFX: {fileID: 507828772}
   landFX: {fileID: 1399389530}
   bombPrefab: {fileID: 940146974761608341, guid: 8f78284f4d96cce4cbd2267d4a5c5d36,
