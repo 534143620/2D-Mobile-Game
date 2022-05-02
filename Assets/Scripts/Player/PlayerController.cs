@@ -35,6 +35,11 @@ public class PlayerController : MonoBehaviour, IDamageable
     public float nextAttack = 0;
     public float attackRate;
 
+    [Header("Player Climb The Ladder ")]
+    public LayerMask whatIsLadder;
+    private bool isCimbling;
+    public float inputVertical;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -105,6 +110,11 @@ public class PlayerController : MonoBehaviour, IDamageable
             Attack();
         }
 
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            isCimbling = true;
+        }
+
     }
 
     void Jump()
@@ -130,6 +140,25 @@ public class PlayerController : MonoBehaviour, IDamageable
         {  
             rb.gravityScale = 4;
         }
+
+        //实现爬梯子的效果
+
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.up, 2.0f, whatIsLadder);
+        if (hitInfo.collider != null)
+        {
+            if (isCimbling == true)
+            {
+                inputVertical = Input.GetAxisRaw("Vertical");
+                rb.velocity = new Vector2(rb.position.x, inputVertical * speed);
+                rb.gravityScale = 0;
+            }
+        }
+        else
+        {
+            isCimbling = false;
+            rb.gravityScale = 4;
+        }
+
     }
 
     private void showFx(GameObject FxObject,Vector3 vector3) //显示跳跃和落地FX,加上相对位置的偏移
