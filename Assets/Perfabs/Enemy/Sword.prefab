@@ -115,13 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 592d75471403f9e43a20888be516b791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  lifeTime: 1.5
-  distance: 2
-  damage: 0
-  whatIsSolid:
-    serializedVersion: 2
-    m_Bits: 0
+  speed: 6
+  lifeTime: 2
   player: {fileID: 0}
   MoveToVector: {x: 0, y: 0}
 --- !u!61 &124658115
@@ -134,7 +129,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.04294324, y: -0.050100207}

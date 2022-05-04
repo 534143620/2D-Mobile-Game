@@ -54,6 +54,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public bool EnemyDeadAll()
+    {
+        return enemies.Count == 0 ? true:false;
+    }
+
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -76,6 +81,7 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
+        if(SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings)
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

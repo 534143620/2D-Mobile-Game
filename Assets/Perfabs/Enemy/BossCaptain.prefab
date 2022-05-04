@@ -107,7 +107,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 801896093
   m_SortingLayer: 2
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: ffcd20b2b746d084a859ad81659e9760, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -201,7 +201,7 @@ MonoBehaviour:
   animState: 0
   health: 0
   isDead: 0
-  hasBomb: 1
+  hasBomb: 0
   isBoss: 1
   speed: 2.5
   attackPosinRange: 1
@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8517c0ce6ec34494ba9c9ec24c9a27dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boomAvilable: 0
+  boomAvilable: 1
 --- !u!1 &6849067024200664833
 GameObject:
   m_ObjectHideFlags: 0

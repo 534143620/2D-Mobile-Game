@@ -85,7 +85,10 @@ public class Enemy : MonoBehaviour
         orgY = transform.position.y;
         alarmSign = transform.GetChild(0).gameObject;
         attackPosin = Math.Abs(transform.position.x - pointA.position.x);
-        health = 10;
+        if (isBoss)
+            health = 15;
+        else
+            health = 10;
     }
 
     public void TransitionToState(EnemyBaseState state)

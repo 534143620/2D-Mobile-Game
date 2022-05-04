@@ -7,9 +7,6 @@ public class Sword : MonoBehaviour
 
     public float speed ;
     public float lifeTime;
-    public float distance;
-    public int damage;
-    public LayerMask whatIsSolid;
     public GameObject player;
     public Vector2 MoveToVector;
     private float startTime;
@@ -30,16 +27,15 @@ public class Sword : MonoBehaviour
             DestroyProjectile();
             return;
         }
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, whatIsSolid);
-        if (hitInfo.collider != null)
-        {
-            if (hitInfo.collider.CompareTag("Player"))
-            {
-                //hitInfo.collider.GetComponent<Enemy>().TakeDamage(damage);
-                hitInfo.collider.GetComponent<IDamageable>().GetHit(1);
-            }
-        }
         transform.Translate(MoveToVector.normalized * speed * Time.deltaTime);
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            other.GetComponent<IDamageable>().GetHit(1);
+        }
     }
 
     void DestroyProjectile()

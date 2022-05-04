@@ -86,7 +86,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7082206045916880822
 Transform:
   m_ObjectHideFlags: 0
@@ -364,13 +364,16 @@ MonoBehaviour:
   hasBomb: 0
   isBoss: 0
   speed: 1
-  pointA: {fileID: 7082206046714706365}
-  pointB: {fileID: 7082206046021456884}
+  attackPosinRange: 0
   targetPoint: {fileID: 7082206046021456884}
   attackRate: 2
   attackRange: 1
   skillRange: 2
   attackList: []
+  pointA: {fileID: 7082206046714706365}
+  pointB: {fileID: 7082206046021456884}
+  orgY: 0
+  autoSwitchPoint: 0
 --- !u!1 &7082206046714706364
 GameObject:
   m_ObjectHideFlags: 0

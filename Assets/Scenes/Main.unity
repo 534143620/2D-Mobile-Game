@@ -314,6 +314,7 @@ MonoBehaviour:
   joystick: {fileID: 0}
   health: 0
   isDead: 0
+  extraJumpsValue: 0
   groundCheck: {fileID: 1718659534}
   checkRange: 0.2
   checkLayerMask:
@@ -321,13 +322,16 @@ MonoBehaviour:
     m_Bits: 256
   isGround: 0
   isJump: 0
-  canJump: 0
   jumpFX: {fileID: 507828772}
   landFX: {fileID: 1399389530}
   bombPrefab: {fileID: 940146974761608341, guid: 8f78284f4d96cce4cbd2267d4a5c5d36,
     type: 3}
   nextAttack: 0
   attackRate: 2
+  whatIsLadder:
+    serializedVersion: 2
+    m_Bits: 0
+  inputVertical: 0
 --- !u!95 &453610022
 Animator:
   serializedVersion: 3
@@ -638,7 +642,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.19607845, g: 0.19607845, b: 0.19607845, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
